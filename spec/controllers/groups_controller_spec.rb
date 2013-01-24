@@ -24,7 +24,7 @@ describe GroupsController do
   # Group. As you add validations to Group, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {name: "5 Serie B"}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -76,42 +76,29 @@ describe GroupsController do
     it { render_template 'edit' }
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Group" do
-        expect {
-          post :create, {:group => valid_attributes}, valid_session
-        }.to change(Group, :count).by(1)
-      end
-
-      it "assigns a newly created group as @group" do
-        post :create, {:group => valid_attributes}, valid_session
-        assigns(:group).should be_a(Group)
-        assigns(:group).should be_persisted
-      end
-
-      it "redirects to the created group" do
-        post :create, {:group => valid_attributes}, valid_session
-        response.should redirect_to(Group.last)
-      end
+  describe "POST create" do          
+    context "with valid params" do
+      before { post :create, group: valid_attributes }
+      
+      it { assigns(:group).should be_a(Group) }
+      it { assigns(:group).should be_persisted }
+      it { response.should redirect_to(groups_path) }
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved group as @group" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Group.any_instance.stub(:save).and_return(false)
-        post :create, {:group => {}}, valid_session
-        assigns(:group).should be_a_new(Group)
+    
+    context "with invalid params" do
+      def do_action(param)
+        post(:create, group: param)
+      end
+    
+      before do
+        do_action({name: ""})
       end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Group.any_instance.stub(:save).and_return(false)
-        post :create, {:group => {}}, valid_session
-        response.should render_template("new")
-      end
+      it { should render_template(:new) }
+      it { should respond_with(:success) }
     end
   end
+
 
   describe "PUT update" do
     describe "with valid params" do
