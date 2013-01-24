@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :discipline do
-    name "MyString"
+    name "Geografia"
   end
 end
