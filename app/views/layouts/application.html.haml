@@ -33,19 +33,14 @@
       </script>
 
   %body{:id => controller.controller_name}
+    .navbar
+      .navbar-inner
+        %ul.nav
+          %li
+            %a= link_to "Alunos", students_path  
     #wrap
       %header
         #masthead
-          /- if current_user
-          /  %p
-          /    = "Bem-vindo <strong>#{current_user.name}</strong> &bull; ".html_safe
-          /    = link_to "Sair", logout_path
-          /- else
-          /  %p
-          /    = link_to "Acesse com Facebook", "/auth/facebook", :id => "facebook-connect"
-
-        #logo<
-          = link_to "Logo", root_url
 
         - if notice
           %p.notice
@@ -62,7 +57,3 @@
         - if content_for?(:sidebar)
           %aside
             = yield(:sidebar)
-      %hr
-      %footer
-        %p
-          = "Copyright &copy; 2012 App".html_safe
