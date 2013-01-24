@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :group do
-    name "MyString"
+    name "5 Serie B"
   end
 end

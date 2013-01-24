@@ -34,12 +34,15 @@ describe GroupsController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all groups as @groups" do
-      group = Group.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:groups).should eq([group])
+  describe "GET 'index'" do
+    let!(:group) { FactoryGirl.create(:group) }
+    
+    before do
+      get 'index'
     end
+    
+    it { response.should be_success }
+    it { assigns(:groups).should == [group] }
   end
 
   describe "GET show" do
