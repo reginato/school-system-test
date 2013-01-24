@@ -8,7 +8,7 @@ development:
   host: localhost
   encoding: utf8
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: school-system-test_test
@@ -18,3 +18,5 @@ test:
   min_messages: WARNING
   host: localhost
   encoding: utf8
+cucumber:
+  <<: *test

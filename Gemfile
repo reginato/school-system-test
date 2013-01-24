@@ -30,6 +30,8 @@ group :test do
   gem 'simplecov', '0.6.1', :require => false
   gem 'guard-rspec', '2.1.0'
 	gem 'capybara', '1.1.2'
+	gem 'database_cleaner',   '0.9.1'
+  gem 'cucumber-rails',     '1.3.0', :require => false	
 end
 
 group :development, :test do
