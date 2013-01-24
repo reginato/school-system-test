@@ -60,11 +60,11 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Before do
   DatabaseCleaner.clean
-  Factory(:student, :name => "Rodrigo")
-  Factory(:student, :name => "Pedro")
+  group = Factory(:group, :name => "5 serie A")  
+  Factory(:student, :name => "Rodrigo", group: group)
+  Factory(:student, :name => "Pedro", group: group)
   teacher = Factory(:teacher, :name => "Professor Pardal")    
   Factory(:discipline, :name => "Portugues", teacher: teacher)
-  Factory(:teacher, :name => "Professor Pardal")  
 end
 
 After do

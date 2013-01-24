@@ -10,6 +10,7 @@ end
 
 Então /^eu crio um novo aluno preenchendo todos os campos dos cadastro$/ do
   fill_in("student_name",    with: "Rodrigo Reginato Marques")
+  select("5 serie A", :from => "student_group_id")  
   click_button("Create Student")
 end
 
