@@ -7,15 +7,8 @@ gem 'haml-rails',           '0.3.5'
 gem 'thin',                 '1.3.1'
 gem 'pg',                   '0.14.0'
 gem 'rack-canonical-host',  '0.0.8'
-# gem 'paperclip', '3.0.4'
-# gem 'aws-sdk', '1.5.2'
-# gem 'paranoia', '1.1.0'
-# gem 'omniauth', '1.1.1'
-# gem 'omniauth-facebook', '1.4.1'
-# gem 'typus', '3.1.10'
-# gem 'kaminari', '0.13.0'
-# gem 'rdiscount', '1.6.8'
-# gem 'acts_as_hashed', '0.0.2'
+gem "therubyracer",         '0.11.3'
+gem "less-rails",            '2.2.6'
 
 group :assets do
   gem 'sass-rails',         '3.2.5'
@@ -37,7 +30,6 @@ group :test do
   gem 'simplecov', '0.6.1', :require => false
   gem 'guard-rspec', '2.1.0'
 	gem 'capybara', '1.1.2'
-  # gem 'capybara-webkit', '0.13.0'
 end
 
 group :development, :test do
