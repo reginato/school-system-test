@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Group do
-  [:name, :students_attributes].each do |attribute|
+  [:name, :students_attributes, :discipline_ids].each do |attribute|
     it { should allow_mass_assignment_of(attribute) }
   end      
   it { should validate_presence_of(:name) }

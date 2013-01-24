@@ -33,5 +33,38 @@
            <% end %>
         <% end %>  
     <% end %>
-  </table>    
+  </table>   
+  
+  <table class="table-striped table_width">
+    <% if params[:teacher] %> 
+      <tr>
+        <td>Disciplina - Professor</td>
+        <td></td>
+      </tr>              
+      <% @disciplines.each do |discipline| %> 
+        <tr>
+          <td></td>
+          <td><%= "Disciplina: #{discipline.name} - Professor #{discipline.teacher.name}" %></td>  
+        </tr>  
+      <% end %>  
+    <% else  %> 
+      <tr>
+        <td>Disciplina - Professor</td>
+        <td></td>
+      </tr>              
+      <% @groups.each do |group| %> 
+        <tr>
+          <td><%= "Turma #{group.name}" %></td>
+          <td></td>
+        </tr>  
+        <% group.disciplines.each do |discipline| %> 
+          <tr>
+            <td></td>
+            <td><%= "#{discipline.name} - #{discipline.teacher.name}"%></td>            
+          </tr>  
+        <% end %>
+      <% end %>  
+    <% end %>
+  </table>  
+   
 </div>  

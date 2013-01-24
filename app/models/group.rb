@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  attr_accessible :name, :students_attributes
+  attr_accessible :name, :students_attributes, :discipline_ids
   validates :name,  presence: true  
   
   has_many :students
