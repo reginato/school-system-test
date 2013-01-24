@@ -9,6 +9,8 @@ gem 'pg',                   '0.14.0'
 gem 'rack-canonical-host',  '0.0.8'
 gem "therubyracer",         '0.11.3'
 gem "less-rails",            '2.2.6'
+gem "cocoon",                "1.1.2"  
+gem 'simple_form',           '2.0.4'
 
 group :assets do
   gem 'sass-rails',         '3.2.5'
