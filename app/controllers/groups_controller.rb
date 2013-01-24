@@ -11,9 +11,9 @@ class GroupsController < ApplicationController
   end
 
   def report
-    
+    params[:group] ? @students = Group.find(params[:group]).students : @students = Student.all.group_by(&:group)
+    params[:teacher] ? @disciplines = Discipline.find_all_by_teacher_id(params[:teacher]) : @groups = Group.all
   end
-
 
   # GET /groups/1
   # GET /groups/1.json

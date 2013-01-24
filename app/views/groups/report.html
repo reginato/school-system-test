@@ -1,5 +1,37 @@
+<%= form_tag report_groups_path, :method => :get do %>
+  <%= select_tag("group", options_from_collection_for_select(Group.all, :id, :name, {:include_blank => true, :selected => nil})) %>
+  <%= select_tag("teacher", options_from_collection_for_select(Teacher.all, :id, :name, {:include_blank => true, :selected => nil})) %>
+  <%= submit_tag "Buscar", :class => 'btn btn-primary' %>
+<% end %>
+
 <div class="page-header">
   <h1>Report</h1>
-  
-  
+  <table class="table-striped table_width">
+    <tr>
+      <td><b>Turma</b></td>
+      <td><b>Aluno</b></td>  
+    </tr>    
+    <% if params[:group] %>
+    <% @students.each do |i| %>
+        <tr>
+          <td></td>
+          <td><%= i.name %></td>
+        </tr> 
+    <% end %>    
+    <% else %>
+      <table class="table-striped table_width">
+        <% @students.each do |i| %>
+          <tr>
+            <td><b><%= "Turma - #{i[0].name}"%></b></td>
+            <td></td>
+          </tr> 
+          <% i[1].each do |s| %>
+            <tr>
+              <td></td>
+              <td><%= s.name %></td>
+            </tr> 
+           <% end %>
+        <% end %>  
+    <% end %>
+  </table>    
 </div>  

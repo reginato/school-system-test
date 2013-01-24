@@ -55,12 +55,45 @@ describe GroupsController do
   end
   
   describe "GET report" do
-    before do
-      get :report
-    end
+    let!(:group) { FactoryGirl.create(:group, name: "5 serie") }
+    let!(:group2) { FactoryGirl.create(:group, name: "6 serie") }      
+    let!(:student) { FactoryGirl.create(:student, group_id: group.id) }
+    let!(:student2) { FactoryGirl.create(:student, group_id: group.id)  }
+    let!(:student3) { FactoryGirl.create(:student, group_id: group2.id) }
+    let!(:student4) { FactoryGirl.create(:student, group_id: group2.id) }
+    let!(:teacher) { FactoryGirl.create(:teacher)  }
+    let!(:discipline) { FactoryGirl.create(:discipline, teacher_id: teacher.id) }
     
-    it { response.should be_success }
-    it { render_template 'report' }
+    context "template sucess" do
+      before do
+        get :report
+      end
+
+      it { response.should be_success }
+      it { render_template 'report' }      
+    end
+    context "group params" do            
+      it "should return grouped students for all classes without group params" do
+        get :report
+        assigns(:students).should eq({group =>[student, student2], group2 => [student3, student4]})
+      end
+      
+      it "should return students with group params" do
+        get :report, group: group.id
+        assigns(:students).should eq([student, student2])        
+      end
+    end
+    context "teacher params" do
+      it "return all groups without params" do
+        get :report
+        assigns(:groups).should eq([group, group2])
+      end
+      
+      it "return all discipline with teacher params" do
+        get :report, teacher: teacher.id
+        assigns(:disciplines).should eq([discipline])
+      end
+    end
   end
 
   describe "GET 'new'" do
