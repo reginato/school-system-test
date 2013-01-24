@@ -1,19 +1,21 @@
-%h1 Listing disciplines
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @disciplines.each do |discipline|
+- model_class = Discipline
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
     %tr
-      %td= discipline.name
-      %td= link_to 'Show', discipline
-      %td= link_to 'Edit', edit_discipline_path(discipline)
-      %td= link_to 'Destroy', discipline, method: :delete, data: { confirm: 'Are you sure?' }
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @disciplines.each do |discipline|
+      %tr
+        %td= link_to discipline.id, discipline_path(discipline)
+        %td= discipline.name
+        %td=l discipline.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_discipline_path(discipline), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), discipline_path(discipline), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-%br
-
-= link_to 'New Discipline', new_discipline_path
+= link_to t('.new', :default => t("helpers.links.new")), new_discipline_path, :class => 'btn btn-primary'
