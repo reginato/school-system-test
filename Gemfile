@@ -35,7 +35,7 @@ group :test do
   gem 'shoulda-matchers',   '1.1.0'
   gem 'timecop',            '0.3.5'
   gem 'simplecov', '0.6.1', :require => false
-  # gem 'guard-rspec', '2.1.0'
+  gem 'guard-rspec', '2.1.0'
 	gem 'capybara', '1.1.2'
   # gem 'capybara-webkit', '0.13.0'
 end
