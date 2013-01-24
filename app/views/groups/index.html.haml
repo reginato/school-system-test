@@ -13,7 +13,7 @@
       %tr
         %td= link_to group.id, group_path(group)
         %td= group.name
-        %td=l group.created_at
+        %td=l group.created_at, format: :long
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_group_path(group), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), group_path(group), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
