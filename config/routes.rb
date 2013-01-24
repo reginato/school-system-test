@@ -1,6 +1,9 @@
 SchoolSystemTest::Application.routes.draw do
-  resources :groups
-
+  resources :groups do
+    collection do
+      get :report
+    end  
+  end
 
   resources :teachers
 

@@ -11,6 +11,10 @@ describe GroupsController do
       get("/groups/new").should route_to("groups#new")
     end
 
+    it "routes to #groups#report" do
+      get("/groups/report").should route_to("groups#report") 
+    end    
+
     it "routes to #show" do
       get("/groups/1").should route_to("groups#show", :id => "1")
     end
