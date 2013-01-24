@@ -53,6 +53,15 @@ describe GroupsController do
       assigns(:group).should eq(group)
     end
   end
+  
+  describe "GET report" do
+    before do
+      get :report
+    end
+    
+    it { response.should be_success }
+    it { render_template 'report' }
+  end
 
   describe "GET 'new'" do
     before do
