@@ -4,6 +4,8 @@ describe Discipline do
   it { should allow_mass_assignment_of(:name) }
   it { should validate_presence_of(:name) }
   
+  it {should belong_to(:teacher)}
+  
   describe "uniqueness" do
     it "should uniqueness name" do
       discipline = Discipline.create(name: "Geografia")
