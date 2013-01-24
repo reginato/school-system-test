@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Discipline do
   it { should allow_mass_assignment_of(:name) }
+  it { should allow_mass_assignment_of(:teacher_id) }  
   it { should validate_presence_of(:name) }
   
   it {should belong_to(:teacher)}
