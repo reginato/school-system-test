@@ -62,7 +62,9 @@ Before do
   DatabaseCleaner.clean
   Factory(:student, :name => "Rodrigo")
   Factory(:student, :name => "Pedro")
-  Factory(:discipline, :name => "Portugues")
+  teacher = Factory(:teacher, :name => "Professor Pardal")    
+  Factory(:discipline, :name => "Portugues", teacher: teacher)
+  Factory(:teacher, :name => "Professor Pardal")  
 end
 
 After do

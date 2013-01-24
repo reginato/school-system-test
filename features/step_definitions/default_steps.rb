@@ -24,5 +24,6 @@ end
 
 Então /^eu crio um nova disciplina preenchendo todos os campos dos cadastro$/ do
   fill_in("discipline_name",    with: "Geografia")
+  select("Professor Pardal", :from => "discipline_teacher_id")
   click_button("Create Discipline")
 end
