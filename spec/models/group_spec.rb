@@ -5,8 +5,8 @@ describe Group do
     it { should allow_mass_assignment_of(attribute) }
   end      
   it { should validate_presence_of(:name) }
-    
   it { should have_many(:students) }
+  it {should have_and_belong_to_many(:disciplines)}
   
   describe "accepts_nested_attributes_for students" do
     let(:group) { FactoryGirl.create(:group) }
