@@ -100,63 +100,53 @@ describe GroupsController do
   end
 
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested group" do
-        group = Group.create! valid_attributes
-        # Assuming there are no other groups in the database, this
-        # specifies that the Group created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Group.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => group.to_param, :group => {'these' => 'params'}}, valid_session
+  describe "POST 'update'" do
+    let!(:group) { FactoryGirl.create(:group) }
+    context "with valid params" do
+      before do
+        put 'update', :id => group.to_param, :group => { :name => "5 serie B" }
       end
 
-      it "assigns the requested group as @group" do
-        group = Group.create! valid_attributes
-        put :update, {:id => group.to_param, :group => valid_attributes}, valid_session
-        assigns(:group).should eq(group)
-      end
-
-      it "redirects to the group" do
-        group = Group.create! valid_attributes
-        put :update, {:id => group.to_param, :group => valid_attributes}, valid_session
-        response.should redirect_to(group)
-      end
+      it { assigns(:group).should == group }
+      it { redirect_to(groups_path) }
+      it { flash[:notice].should == "Group was successfully updated." }
+      it { group.reload.name.should == "5 serie B" }
     end
-
-    describe "with invalid params" do
-      it "assigns the group as @group" do
-        group = Group.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Group.any_instance.stub(:save).and_return(false)
-        put :update, {:id => group.to_param, :group => {}}, valid_session
-        assigns(:group).should eq(group)
+    
+    context "with invalid params" do
+      before do
+        put 'update', :id => group.to_param, :group => { :name => "" }
       end
 
-      it "re-renders the 'edit' template" do
-        group = Group.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Group.any_instance.stub(:save).and_return(false)
-        put :update, {:id => group.to_param, :group => {}}, valid_session
-        response.should render_template("edit")
-      end
+      it { assigns(:group).should == group }
+      it { render_template 'edit' }
+    end
+        
+    it "should redirect to home" do
+      put 'update', :id => group.to_param, :group => { :name => "5 Serie B" }
+      response.should redirect_to(groups_path)
     end
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested group" do
-      group = Group.create! valid_attributes
-      expect {
-        delete :destroy, {:id => group.to_param}, valid_session
-      }.to change(Group, :count).by(-1)
-    end
-
-    it "redirects to the groups list" do
-      group = Group.create! valid_attributes
-      delete :destroy, {:id => group.to_param}, valid_session
-      response.should redirect_to(groups_url)
-    end
+    let!(:group) { FactoryGirl.create(:group) }
+    
+    context "should find and redirect" do      
+      before do
+        delete :destroy, id: group.to_param
+      end
+      
+      it { assigns(:group).should == group }
+      it { redirect_to(groups_path) }
+    end  
+          
+    context "context" do
+      it "should destroy a Group" do
+        expect {
+          delete :destroy, id: group.to_param
+        }.to change(Group, :count).by(-1)
+      end        
+    end    
   end
-
+  
 end
