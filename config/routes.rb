@@ -1,4 +1,7 @@
 SchoolSystemTest::Application.routes.draw do
+  resources :disciplines
+
+
   resources :students
 
 
