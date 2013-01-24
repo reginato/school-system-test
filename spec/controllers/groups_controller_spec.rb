@@ -46,26 +46,34 @@ describe GroupsController do
   end
 
   describe "GET show" do
+    let!(:group) { FactoryGirl.create(:group) }
+    
     it "assigns the requested group as @group" do
-      group = Group.create! valid_attributes
-      get :show, {:id => group.to_param}, valid_session
+      get :show, :id => group.id
       assigns(:group).should eq(group)
     end
   end
 
-  describe "GET new" do
-    it "assigns a new group as @group" do
-      get :new, {}, valid_session
-      assigns(:group).should be_a_new(Group)
+  describe "GET 'new'" do
+    before do
+      get 'new'
     end
+
+    it { response.should be_success }
+    it { assigns(:group).should be_instance_of Group }
+    it { render_template 'new' }
   end
 
-  describe "GET edit" do
-    it "assigns the requested group as @group" do
-      group = Group.create! valid_attributes
-      get :edit, {:id => group.to_param}, valid_session
-      assigns(:group).should eq(group)
+  describe "GET 'edit" do
+    let!(:group) { FactoryGirl.create(:group) }
+
+    before do
+      get 'edit', :id => group.to_param
     end
+  
+    it { response.should be_success }
+    it { assigns(:group).should be_instance_of Group }
+    it { render_template 'edit' }
   end
 
   describe "POST create" do
