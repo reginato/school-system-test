@@ -28,3 +28,13 @@ Então /^eu crio um nova disciplina preenchendo todos os campos dos cadastro$/ d
   select("Professor Pardal", :from => "discipline_teacher_id")
   click_button("Create Discipline")
 end
+
+Então /^eu crio uma nova classe preenchendo todos os campos dos cadastro$/ do
+  fill_in("group_name",    with: "5 Serie A")
+  check("Portugues")
+  click_button("Create Group")  
+end    
+
+Então /^entao devo visualizar apos o cadatro$/ do
+  page.should have_content('Group was successfully created.')
+end

@@ -1,6 +1,6 @@
 <%= form_tag report_groups_path, :method => :get do %>
-  <%= select_tag("group", options_from_collection_for_select(Group.all, :id, :name, {:include_blank => true, :selected => nil})) %>
-  <%= select_tag("teacher", options_from_collection_for_select(Teacher.all, :id, :name, {:include_blank => true, :selected => nil})) %>
+  <b>Turma:</b> <%= select_tag "group", options_from_collection_for_select(Group.all, :id, :name), :include_blank => true %>
+  <b>Professor:</b> <%= select_tag "teacher", options_from_collection_for_select(Teacher.all, :id, :name), :include_blank => true %>
   <%= submit_tag "Buscar", :class => 'btn btn-primary' %>
 <% end %>
 
@@ -11,7 +11,7 @@
       <td><b>Turma</b></td>
       <td><b>Aluno</b></td>  
     </tr>    
-    <% if params[:group] %>
+    <% if params[:group] && params[:group] != "" %>
     <% @students.each do |i| %>
         <tr>
           <td></td>
@@ -36,11 +36,11 @@
   </table>   
   
   <table class="table-striped table_width">
-    <% if params[:teacher] %> 
+    <% if params[:teacher] && params[:teacher] != "" %> 
       <tr>
-        <td>Disciplina - Professor</td>
+        <td><b>Disciplina - Professor</b></td>
         <td></td>
-      </tr>              
+      </tr>                      
       <% @disciplines.each do |discipline| %> 
         <tr>
           <td></td>
@@ -49,12 +49,12 @@
       <% end %>  
     <% else  %> 
       <tr>
-        <td>Disciplina - Professor</td>
+        <td><b>Disciplina - Professor</b></td>
         <td></td>
-      </tr>              
+      </tr>                      
       <% @groups.each do |group| %> 
         <tr>
-          <td><%= "Turma #{group.name}" %></td>
+          <td><b><%= "Turma #{group.name}" %></b></td>
           <td></td>
         </tr>  
         <% group.disciplines.each do |discipline| %> 

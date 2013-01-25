@@ -82,6 +82,11 @@ describe GroupsController do
         get :report, group: group.id
         assigns(:students).should eq([student, student2])        
       end
+      
+      it "should return grouped students for all classes without group params" do
+        get :report, group: ""
+        assigns(:students).should eq({group =>[student, student2], group2 => [student3, student4]})
+      end
     end
     context "teacher params" do
       it "return all groups without params" do
@@ -93,6 +98,11 @@ describe GroupsController do
         get :report, teacher: teacher.id
         assigns(:disciplines).should eq([discipline])
       end
+      
+      it "return all groups without params" do
+        get :report, teacher: ""
+        assigns(:groups).should eq([group, group2])
+      end      
     end
   end
 
