@@ -6,7 +6,7 @@ describe DisciplinesController do
   # Discipline. As you add validations to Discipline, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {:name => "Geografia"}
+    {:name => "Geografia", :teacher_id => "1"}
   end
 
   # This should return the minimal set of values that should be in the session
@@ -110,7 +110,7 @@ describe DisciplinesController do
   end
 
   describe "DELETE destroy" do
-    let!(:discipline) { FactoryGirl.create(:discipline) }
+    let!(:discipline) { FactoryGirl.create(:discipline) }  
     
     context "should find and redirect" do      
       before do

@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :discipline do
     name "Geografia"
+    teacher_id 1
   end
 end
