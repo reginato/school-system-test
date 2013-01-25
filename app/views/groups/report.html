@@ -6,7 +6,7 @@
 
 <div class="page-header">
   <h1>Report</h1>
-  <table class="table-striped table_width">
+  <table class="table-striped table_width table-hover">
     <tr>
       <td><b>Turma</b></td>
       <td><b>Aluno</b></td>  
@@ -19,7 +19,7 @@
         </tr> 
     <% end %>    
     <% else %>
-      <table class="table-striped table_width">
+      <table class="table-striped table_width table-hover">
         <% @students.each do |i| %>
           <tr>
             <td><b><%= "Turma - #{i[0].name}"%></b></td>
@@ -35,7 +35,7 @@
     <% end %>
   </table>   
   
-  <table class="table-striped table_width">
+  <table class="table-striped table_width table-hover">
     <% if params[:teacher] && params[:teacher] != "" %> 
       <tr>
         <td><b>Disciplina - Professor</b></td>

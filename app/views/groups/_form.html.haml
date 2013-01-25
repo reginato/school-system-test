@@ -1,16 +1,14 @@
 = simple_form_for @group, :html => { :class => 'form-horizontal' } do |f|
   .controls
     = f.input :name, :class => 'text_field'
-        
+            
   %h3 Students
   #students
     = f.simple_fields_for :students do |student|
       = render 'student_fields', :f => student
     = link_to_add_association 'add student', f, :students
     
-  #disciplines_form
-    .control-group   
-      = f.association :disciplines, :as => :check_boxes
+  = f.association :disciplines, :as => :check_boxes
       
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
