@@ -11,6 +11,7 @@ gem "therubyracer",         '0.11.3'
 gem "less-rails",            '2.2.6'
 gem "cocoon",                "1.1.2"  
 gem 'simple_form',           '2.0.4'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',         '3.2.5'
