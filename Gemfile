@@ -1,4 +1,4 @@
-source :rubygems
+source 'http://rubygems.org'
 ruby "1.9.3"
 
 gem 'rails',                '3.2.11'
@@ -9,7 +9,7 @@ gem 'pg',                   '0.14.0'
 gem 'rack-canonical-host',  '0.0.8'
 gem "therubyracer",         '0.11.3'
 gem "less-rails",            '2.2.6'
-gem "cocoon",                "1.1.2"  
+gem "cocoon",                "1.1.2"
 gem 'simple_form',           '2.0.4'
 gem 'newrelic_rpm'
 
@@ -34,7 +34,7 @@ group :test do
   gem 'guard-rspec', '2.1.0'
 	gem 'capybara', '1.1.2'
 	gem 'database_cleaner',   '0.9.1'
-  gem 'cucumber-rails',     '1.3.0', :require => false	
+  gem 'cucumber-rails',     '1.3.0', :require => false
 end
 
 group :development, :test do
