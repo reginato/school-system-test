@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails',                '3.2.11'
-gem 'jquery-rails',         '2.1.4'
-gem 'haml-rails',           '0.3.5'
+gem 'rails', '4.0.0'
+gem 'jquery-rails', '2.1.4'
+gem 'haml-rails', '0.3.5'
 gem 'thin',                 '1.3.1'
 gem 'pg',                   '0.14.0'
 gem 'rack-canonical-host',  '0.0.8'
@@ -14,10 +14,10 @@ gem 'simple_form',           '2.0.4'
 gem 'newrelic_rpm'
 
 group :assets do
-  gem 'sass-rails',         '3.2.5'
-  gem 'coffee-rails',       '3.2.2'
+  gem 'sass-rails', '4.0.0'
+  gem 'coffee-rails', '4.0.0'
   gem 'uglifier',           '1.3.0'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '>= 2.2.0'
 end
 
 group :development do
@@ -34,11 +34,11 @@ group :test do
   gem 'guard-rspec', '2.1.0'
 	gem 'capybara', '1.1.2'
 	gem 'database_cleaner',   '0.9.1'
-  gem 'cucumber-rails',     '1.3.0', :require => false
+  gem 'cucumber-rails', '1.3.0', :require => false
 end
 
 group :development, :test do
-  gem 'rspec-rails',        '2.11.0'
+  gem 'rspec-rails', '2.11.0'
   gem 'factory_girl_rails', '1.7.0'
   gem 'pry-rails',          '0.1.6'
 end
