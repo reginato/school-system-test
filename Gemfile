@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails',                '3.2.11'
+gem 'rails', '4.0.0'
 gem 'jquery-rails',         '2.1.4'
 gem 'haml-rails',           '0.3.5'
 gem 'thin',                 '1.3.1'
