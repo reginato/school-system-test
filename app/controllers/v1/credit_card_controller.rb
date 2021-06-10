@@ -12,7 +12,7 @@ module Api
                   :first_name, :last_name, :brand, \
                   :expiration_month, :expiration_year, :cvc, \
                   :country, :state, :city, :zip_code, :district, \
-                  :street, :number, :complement, :phone
+                  :street, :number, :complement, :phone, :none
                 ).merge({
                     user_id: @current_user.id
                   })
